@@ -792,7 +792,7 @@
                 </div>
             </nav>
         <?php else: ?>
-            <nav class="navbar navbar-expand-lg d-flex py-3 fixed-top shadow" style="background-color: grey;">
+            <nav class="navbar navbar-expand-lg d-flex py-3 fixed-top shadow" style="background-color: #1f0b3e;">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="<?php echo e(route('home')); ?>">
 
@@ -889,7 +889,7 @@
         <?php endif; ?>
     <?php else: ?>
 
-        <nav class="navbar navbar-expand-lg d-flex fixed-top shadow py-3" style="background-color: grey">
+        <nav class="navbar navbar-expand-lg d-flex fixed-top shadow py-3" style="background-color: #1f0b3e">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo e(route('home')); ?>">
                     
@@ -967,7 +967,7 @@
     </div>
 </div>
 
-<div id="footer-payment" class="col-md-12 col-sm-12  pt-3 pb-3" style="background-color: grey">
+<div id="footer-payment" class="col-md-12 col-sm-12  pt-3 pb-3" style="background-color: #1f0b3e">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-6 p-4">
