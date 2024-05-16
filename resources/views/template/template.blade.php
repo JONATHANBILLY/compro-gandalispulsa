@@ -792,7 +792,7 @@
                 </div>
             </nav>
         @else
-            <nav class="navbar navbar-expand-lg d-flex py-3 fixed-top shadow" style="background-color: grey;">
+            <nav class="navbar navbar-expand-lg d-flex py-3 fixed-top shadow" style="background-color: #1f0b3e;">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{ route('home')}}">
 {{--                        <img src="{{url('')}}{{ !$config ? '' : $config->logo_header }}" alt="" width="100"--}}
@@ -889,7 +889,7 @@
         @endif
     @else
 
-        <nav class="navbar navbar-expand-lg d-flex fixed-top shadow py-3" style="background-color: grey">
+        <nav class="navbar navbar-expand-lg d-flex fixed-top shadow py-3" style="background-color: #1f0b3e">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home')}}">
                     {{-- <h5 class="logo text-white">{{ ENV('APP_NAME') }}</h5> --}}
@@ -967,7 +967,7 @@
     </div>
 </div>
 {{-- <div class="clip-fo" style="margin-bottom: -3px;"></div> --}}
-<div id="footer-payment" class="col-md-12 col-sm-12  pt-3 pb-3" style="background-color: grey">
+<div id="footer-payment" class="col-md-12 col-sm-12  pt-3 pb-3" style="background-color: #1f0b3e">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-6 p-4">
