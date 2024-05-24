@@ -1149,7 +1149,7 @@
                                 </div>
                             </div>
 
-                            <div class="accordion mb-3" id="accordionExample-2" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);border-radius: 6px;">
+                            {{-- <div class="accordion mb-3" id="accordionExample-2" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);border-radius: 6px;">
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header" id="heading-bank">
                                         <button class="accordion-button collapsed bg-white-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-bank" aria-expanded="false" aria-controls="collapse-ewallet">
@@ -1181,14 +1181,9 @@
                                     </div>
                                 </div>
                                 <div class="bg-payment p-2 text-end border-0 text-nowrap" style="border-radius: 0 0 6px 6px;overflow-x: auto">
-                                    {{-- @foreach($pay_method as $p)
-                                    @if($p->tipe == 'qris')
-                                    <img src="{{$p->images}}" alt="" width="64">
-                                    @endif
-                                    @endforeach --}}
                                     <img src="{{ asset('assets/payment/bank-transfer.jpg')}}" alt="" width="64">
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
