@@ -1,6 +1,6 @@
-@extends('template.template')
 
-@section('custom_style')
+
+<?php $__env->startSection('custom_style'); ?>
 <style>
         .toast,.tooltip{font-size:.857rem}.modal-title,.popover,.tooltip{line-height:1.45}.popover,.text-hide,.tooltip{text-shadow:none}.close:hover{color:#5E5873;text-decoration:none}.close:not(:disabled):not(.disabled):focus,.close:not(:disabled):not(.disabled):hover{opacity:.75}button.close{padding:0;background-color:transparent;border:0}a.close.disabled{pointer-events:none}.toast{-webkit-flex-basis:380px;-ms-flex-preferred-size:380px;flex-basis:380px;max-width:380px;color:#6E6B7B;background-color:rgba(255,255,255,.85);background-clip:padding-box;border:0 solid rgba(0,0,0,.1);box-shadow:0 2px 20px 0 rgba(34,41,47,.08);opacity:0;border-radius:.286rem}.modal-content,.toast-header{background-color:#FFF;background-clip:padding-box}.toast:not(:last-child){margin-bottom:1.14rem}.toast.showing{opacity:1}.toast.show{display:block;opacity:1}.toast.hide{display:none}.modal-dialog-scrollable,.toast-header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox}.toast-header{display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;padding:.15rem 1.14rem;color:#6E6B7B;border-bottom:0 solid rgba(0,0,0,.05);border-top-left-radius:.286rem;border-top-right-radius:.286rem}.toast-body{padding:1.14rem}
             .fo-menu {
@@ -50,7 +50,7 @@
             .fo-item.active {
                 border-color: #8f86f3;
             }
-            @media  only screen and (max-width: 600px) {
+            @media    only screen and (max-width: 600px) {
                 .fo-menu {
                     display: block;
                 }
@@ -85,7 +85,7 @@
         }
         .games-banner{
             height:170px;
-            background:url({{ $kategori->banner }});
+            background:url(<?php echo e($kategori->banner); ?>);
             /* background:url(/assets/banner_game/mlbb_miliyan.id.jpg); */
             background-size:cover;
             background-repeat:no-repeat;
@@ -235,12 +235,12 @@
             border-top-color: #FFF;
             animation: spin .6s infinite linear, grow .3s forwards ease-out;
         }
-        @keyframes  spin { 
+        @keyframes    spin { 
             to {
                 transform: rotate(359deg);
             }
         }
-        @keyframes  grow { 
+        @keyframes    grow { 
             to {
                 width: 16px;
                 height: 16px;
@@ -276,15 +276,15 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="modal fade" id="petunjukModal" tabindex="-1" aria-labelledby="petunjukModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="background: transparent; border: none;">
             <div class="modal-body">
-                <img src="{{ $kategori->petunjuk  }}" alt="" class="img-fluid">
+                <img src="<?php echo e($kategori->petunjuk); ?>" alt="" class="img-fluid">
             </div>
                 <button type="button" class="btn mx-auto w-25 text-white bg-transparent" data-bs-dismiss="modal">X</button>
         </div>
@@ -296,13 +296,13 @@
             <div class="card bg-card border-0 mb-4 shadow-form">
                 <div class="games-banner rounded-top"></div>
                 <div class="col-12 px-3 pb-2">
-                    <img src="{{ $kategori->thumbnail  }}" alt="" width="100" class="float-start mr-2" style="border-radius: 16px; margin-top: -50px;">
+                    <img src="<?php echo e($kategori->thumbnail); ?>" alt="" width="100" class="float-start mr-2" style="border-radius: 16px; margin-top: -50px;">
                     <div class="col-8 mt-2 mt-lg-0 float-end">
-                        <h4>{{$kategori->nama}}</h4>
+                        <h4><?php echo e($kategori->nama); ?></h4>
                     </div>
                 </div>
                 <div class="col px-4 mb-4">
-                    <small style="font-size: 14px;">{!! $kategori->deskripsi_game !!}</small>
+                    <small style="font-size: 14px;"><?php echo $kategori->deskripsi_game; ?></small>
                 </div>
             </div>
         </div>
@@ -312,7 +312,7 @@
             <form class="my-form" id="form-order" name="my-form">
                 <input type="hidden" id="nominal">
                 <input type="hidden" id="metode">
-                <input type="hidden" id="ktg_tipe" value="{{$kategori->tipe}}">
+                <input type="hidden" id="ktg_tipe" value="<?php echo e($kategori->tipe); ?>">
                 
                 <div class="card bg-card border-0 mb-4 shadow-form">
                     <div class="px-4 py-4">
@@ -323,16 +323,16 @@
                         </div>
                         <div class="row">
                         
-                        @if($kategori->server_id && $kategori->kode != "life-after" && $kategori->kode != "genshin-impact" && $kategori->kode != "ragnarok-m" && $kategori->kode != "tof" && $kategori->kode != "be-the-king" && $kategori->kode != "hyper-front" && $kategori->kode != "crisis-action" && $kategori->kode != "ragnarok-origin" && $kategori->kode != "identity-v" && $kategori->kode != "ace-racer")
+                        <?php if($kategori->server_id && $kategori->kode != "life-after" && $kategori->kode != "genshin-impact" && $kategori->kode != "ragnarok-m" && $kategori->kode != "tof" && $kategori->kode != "be-the-king" && $kategori->kode != "hyper-front" && $kategori->kode != "crisis-action" && $kategori->kode != "ragnarok-origin" && $kategori->kode != "identity-v" && $kategori->kode != "ace-racer"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_2  }}"  name="zone_id" id="zone" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_2); ?>"  name="zone_id" id="zone" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "life-after")
+                        <?php elseif($kategori->kode == "life-after"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}"  id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>"  id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -362,10 +362,10 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "tof")
+                        <?php elseif($kategori->kode == "tof"): ?>
                             
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}"  id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>"  id="user_id" name="user_id" autocomplete="off">
                             </div>
                             
                             <div class="col-6">
@@ -490,9 +490,9 @@
                                     <option value="Asia-Pacific-Mars">Asia-Pacific-Mars</option>
                                 </select>
                             </div>
-                        @elseif($kategori->kode == "genshin-impact")
+                        <?php elseif($kategori->kode == "genshin-impact"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}"  id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>"  id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -503,9 +503,9 @@
                                 <option value="os_cht">TW_HK_MO</option>
                                 </select>
                             </div>
-                            @elseif($kategori->kode == "ragnarok-m")
+                            <?php elseif($kategori->kode == "ragnarok-m"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}"  id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>"  id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -516,9 +516,9 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "be-the-king")
+                        <?php elseif($kategori->kode == "be-the-king"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -663,9 +663,9 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "hyper-front")
+                        <?php elseif($kategori->kode == "hyper-front"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -674,9 +674,9 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "crisis-action")
+                        <?php elseif($kategori->kode == "crisis-action"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -691,9 +691,9 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "ragnarok-origin")
+                        <?php elseif($kategori->kode == "ragnarok-origin"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -754,9 +754,9 @@
                                 <input type="text" class="form-control" id="additional_data" placeholder="Nickname">
                             </div>
                                 
-                        @elseif($kategori->kode == "identity-v")
+                        <?php elseif($kategori->kode == "identity-v"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -766,9 +766,9 @@
                                 </select>
                             </div>
                                 
-                        @elseif($kategori->kode == "ace-racer")
+                        <?php elseif($kategori->kode == "ace-racer"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <select class="form-control" id="zone">
@@ -781,12 +781,12 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "mobile-legends-vilog")
+                        <?php elseif($kategori->kode == "mobile-legends-vilog"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="email_joki" name="email_joki" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="email_joki" name="email_joki" autocomplete="off">
                             </div>
                             <div class="col-6">
-                            <input type="password" class="form-control" placeholder="{{ $kategori->placeholder_2  }}" id="password_joki" name="password_joki" autocomplete="off">
+                            <input type="password" class="form-control" placeholder="<?php echo e($kategori->placeholder_2); ?>" id="password_joki" name="password_joki" autocomplete="off">
                                 </div>
                                 </select>
                             </div>
@@ -800,183 +800,183 @@
                                 </select>
                             </div>
                             
-                        @elseif($kategori->kode == "mobile-legends")
+                        <?php elseif($kategori->kode == "mobile-legends"): ?>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_2  }}" name="zone_id" id="zone" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_2); ?>" name="zone_id" id="zone" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "apex-legends-mobile")
+                        <?php elseif($kategori->kode == "apex-legends-mobile"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "call-of-duty-mobile")
+                        <?php elseif($kategori->kode == "call-of-duty-mobile"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "point-blank")
+                        <?php elseif($kategori->kode == "point-blank"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "arena-of-valor")
+                        <?php elseif($kategori->kode == "arena-of-valor"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "marvel-super-war")
+                        <?php elseif($kategori->kode == "marvel-super-war"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "valorant")
+                        <?php elseif($kategori->kode == "valorant"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "tri")
+                        <?php elseif($kategori->kode == "tri"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "telkomsel")
+                        <?php elseif($kategori->kode == "telkomsel"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "indosat")
+                        <?php elseif($kategori->kode == "indosat"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "smartfren")
+                        <?php elseif($kategori->kode == "smartfren"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "xl")
+                        <?php elseif($kategori->kode == "xl"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "axis")
+                        <?php elseif($kategori->kode == "axis"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "gopay")
+                        <?php elseif($kategori->kode == "gopay"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "ovo")
+                        <?php elseif($kategori->kode == "ovo"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "isaku")
+                        <?php elseif($kategori->kode == "isaku"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "shopeepay")
+                        <?php elseif($kategori->kode == "shopeepay"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "dana")
+                        <?php elseif($kategori->kode == "dana"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "pln")
+                        <?php elseif($kategori->kode == "pln"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Nomor Listrik Anda" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "linkaja")
+                        <?php elseif($kategori->kode == "linkaja"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
 
-                        @elseif($kategori->kode == "amazon-prime-video")
+                        <?php elseif($kategori->kode == "amazon-prime-video"): ?>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder=" Request Profile" name="zone_id" id="zone" autocomplete="on">
                             </div>
-                        @elseif($kategori->kode == "canva-pro")
+                        <?php elseif($kategori->kode == "canva-pro"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "disney-hotstar")
+                        <?php elseif($kategori->kode == "disney-hotstar"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Nomor Whatsapp " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "iqiyi-premium")
+                        <?php elseif($kategori->kode == "iqiyi-premium"): ?>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "netflix-premium")
+                        <?php elseif($kategori->kode == "netflix-premium"): ?>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder=" Request Profile + Pin" name="zone_id" id="zone" autocomplete="on">
                             </div>
-                        @elseif($kategori->kode == "spotify-premium")
+                        <?php elseif($kategori->kode == "spotify-premium"): ?>
                             <div class="col-12 mb-2">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-12 mb-2">
                                 <input type="text" class="form-control" placeholder="Profile Spotify + Password (khusus Perpanjang)" name="zone_id" id="zone" autocomplete="on">
                             </div>
-                        @elseif($kategori->kode == "vidio-premier")
+                        <?php elseif($kategori->kode == "vidio-premier"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "viu-premium")
+                        <?php elseif($kategori->kode == "viu-premium"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Nomor " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "wetv-premium")
+                        <?php elseif($kategori->kode == "wetv-premium"): ?>
                             <div class="col-12">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "youtube-premium")
+                        <?php elseif($kategori->kode == "youtube-premium"): ?>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Masukkan Email " id="user_id" name="user_id" autocomplete="off">
                             </div>
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Password (khusus gmail sendiri)" name="zone_id" id="zone" autocomplete="on">
                             </div> 
-                        @elseif($kategori->kode == "roblox")
+                        <?php elseif($kategori->kode == "roblox"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "google-play")
+                        <?php elseif($kategori->kode == "google-play"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "garena-shell")
+                        <?php elseif($kategori->kode == "garena-shell"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "razer-gold")
+                        <?php elseif($kategori->kode == "razer-gold"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "riot-cash")
+                        <?php elseif($kategori->kode == "riot-cash"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "unipin")
+                        <?php elseif($kategori->kode == "unipin"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "playstation")
+                        <?php elseif($kategori->kode == "playstation"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @elseif($kategori->kode == "xbox")
+                        <?php elseif($kategori->kode == "xbox"): ?>
                             <div class="col-12">
-                                <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                             </div>
-                        @else
+                        <?php else: ?>
                         
-                            @if(in_array($kategori->tipe,['game','voucher','pulsa','e-money','streamingapp']))
+                            <?php if(in_array($kategori->tipe,['game','voucher','pulsa','e-money','streamingapp'])): ?>
                             
                                 <div class="col-12">
-                                    <input type="text" class="form-control" placeholder="{{ $kategori->placeholder_1  }}" id="user_id" name="user_id" autocomplete="off">
+                                    <input type="text" class="form-control" placeholder="<?php echo e($kategori->placeholder_1); ?>" id="user_id" name="user_id" autocomplete="off">
                                 </div>
                             
-                            @else
+                            <?php else: ?>
                         
                                 <div class="row">
                                     <div class="col-12 mb-2">
@@ -1011,11 +1011,11 @@
                                     </div>
                                 </div>
                             
-                            @endif
+                            <?php endif; ?>
                         
-                        @endif
+                        <?php endif; ?>
                             
-                        <p class="panduan">{!! $kategori->deskripsi_field !!}</p>
+                        <p class="panduan"><?php echo $kategori->deskripsi_field; ?></p>
                             
                         </div>
                     </div>
@@ -1028,23 +1028,23 @@
                             <b>Pilih Layanan</b>
                         </div>
                         <div class="row mt-4">
-                            @if (count($nominal) == 0)
+                            <?php if(count($nominal) == 0): ?>
                             <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                             <strong>Information!</strong> Produk sedang tidak tersedia.</div>
-                            @endif
-                            @foreach($nominal as $nom)
+                            <?php endif; ?>
+                            <?php $__currentLoopData = $nominal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             
                                 <div class="col-6 col-md-3 col-lg-4 mb-3">
-                                    <div id="product-{{$nom->id}}" class="p-2 px-3 cursor-pointer bg-product product-list" product-id="{{$nom->id}}">
-                                        <b class="d-block">{{ $nom->layanan }}</b>
-                                        <span class="harga">Rp {{ number_format($nom->harga) }},-</span>
+                                    <div id="product-<?php echo e($nom->id); ?>" class="p-2 px-3 cursor-pointer bg-product product-list" product-id="<?php echo e($nom->id); ?>">
+                                        <b class="d-block"><?php echo e($nom->layanan); ?></b>
+                                        <span class="harga">Rp <?php echo e(number_format($nom->harga)); ?>,-</span>
                                     <!-- <td class="text-end">
-                                <img src="{{ $nom->product_logo }}" alt="" width="28">
+                                <img src="<?php echo e($nom->product_logo); ?>" alt="" width="28">
                                 </td> -->
                                     </div>
                                 </div>
                                                 
-                            @endforeach							
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>							
                         
                         </div>
                     </div>
@@ -1068,38 +1068,38 @@
                                     <div id="collapse-qris" class="accordion-collapse collapse" aria-labelledby="heading-qris" data-bs-parent="#accordionExample-1">
                                         <div class="accordion-body bg-payment">
                                             <div class="row">
-                                                @foreach($pay_method as $p)
-                                                @if($p->tipe == 'qris')
+                                                <?php $__currentLoopData = $pay_method; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($p->tipe == 'qris'): ?>
                                                 <div class="col-6 col-md-3 col-lg-4">
-                                                    <div id="method-23" class="p-2 border rounded mb-3 method-list bg-light shadow-sm"  method-id="{{$p->code}}">
+                                                    <div id="method-23" class="p-2 border rounded mb-3 method-list bg-light shadow-sm"  method-id="<?php echo e($p->code); ?>">
                                                         <table class="w-100 border-bottom mb-2">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$p->images}}" alt="" class="w-75">
+                                                                    <img src="<?php echo e($p->images); ?>" alt="" class="w-75">
                                                                 </td>
                                                                 <td>
-                                                                    <b style="font-size: 12px;white-space: nowrap;" id="{{$p->code}}"></b>
+                                                                    <b style="font-size: 12px;white-space: nowrap;" id="<?php echo e($p->code); ?>"></b>
                                                                 </td>
                                                             </tr>
                                                         </table>
                                                         <div style="font-size: 12px;color: #718096;">
-                                                            <b class="d-block mb-2">{{$p->name}}</b>
-                                                            <b class="d-block"  style="color: var(--warna_2);">{{$p->keterangan}}</b>
+                                                            <b class="d-block mb-2"><?php echo e($p->name); ?></b>
+                                                            <b class="d-block"  style="color: var(--warna_2);"><?php echo e($p->keterangan); ?></b>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @endif
-                                                @endforeach
+                                                <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="bg-payment p-2 text-end border-0 text-nowrap" style="border-radius: 0 0 6px 6px;overflow-x: auto">
-                                    @foreach($pay_method as $p)
-                                    @if($p->tipe == 'qris')
-                                    <img src="{{$p->images}}" alt="" width="64">
-                                    @endif
-                                    @endforeach
+                                    <?php $__currentLoopData = $pay_method; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($p->tipe == 'qris'): ?>
+                                    <img src="<?php echo e($p->images); ?>" alt="" width="64">
+                                    <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
 
@@ -1114,42 +1114,42 @@
                                     <div id="collapse-virtual-account" class="accordion-collapse collapse" aria-labelledby="heading-virtual-account" data-bs-parent="#accordionExample-5">
                                         <div class="accordion-body bg-payment">
                                             <div class="row">
-                                                @foreach($pay_method as $p)
-                                                @if($p->tipe == 'virtual-account')
+                                                <?php $__currentLoopData = $pay_method; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($p->tipe == 'virtual-account'): ?>
                                                 <div class="col-6 col-md-3 col-lg-4">
-                                                    <div id="method-21" class="p-2 border rounded mb-3 method-list bg-light shadow-sm"  method-id="{{$p->code}}">
+                                                    <div id="method-21" class="p-2 border rounded mb-3 method-list bg-light shadow-sm"  method-id="<?php echo e($p->code); ?>">
                                                         <table class="w-100 border-bottom mb-2">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$p->images}}" alt="" class="w-75">
+                                                                    <img src="<?php echo e($p->images); ?>" alt="" class="w-75">
                                                                 </td>
                                                                 <td>
-                                                                    <b style="font-size: 12px;white-space: nowrap;" id="{{$p->code}}"></b>
+                                                                    <b style="font-size: 12px;white-space: nowrap;" id="<?php echo e($p->code); ?>"></b>
                                                                 </td>
                                                             </tr>
                                                         </table>
                                                         <div style="font-size: 12px;color: #718096;">
-                                                            <b class="d-block mb-2">{{$p->name}}</b>
-                                                            <b class="d-block" style="color: var(--warna_2);">{{$p->keterangan}}</b>
+                                                            <b class="d-block mb-2"><?php echo e($p->name); ?></b>
+                                                            <b class="d-block" style="color: var(--warna_2);"><?php echo e($p->keterangan); ?></b>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @endif
-                                                @endforeach
+                                                <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="bg-payment p-2 text-end border-0 text-nowrap" style="border-radius: 0 0 6px 6px;overflow-x: auto">
-                                    @foreach($pay_method as $p)
-                                    @if($p->tipe == 'virtual-account')
-                                    <img src="{{$p->images}}" alt="" width="64">
-                                    @endif
-                                    @endforeach
+                                    <?php $__currentLoopData = $pay_method; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($p->tipe == 'virtual-account'): ?>
+                                    <img src="<?php echo e($p->images); ?>" alt="" width="64">
+                                    <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
 
-                            {{-- <div class="accordion mb-3" id="accordionExample-2" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);border-radius: 6px;">
+                            <div class="accordion mb-3" id="accordionExample-2" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);border-radius: 6px;">
                                 <div class="accordion-item border-0">
                                     <h2 class="accordion-header" id="heading-bank">
                                         <button class="accordion-button collapsed bg-white-custom text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-bank" aria-expanded="false" aria-controls="collapse-ewallet">
@@ -1164,7 +1164,7 @@
                                                         <table class="w-100 border-bottom mb-2">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{ asset('assets/payment/bank-transfer.jpg')}}" alt="" width="64">
+                                                                    <img src="<?php echo e(asset('assets/payment/bank-transfer.jpg')); ?>" alt="" width="64">
 
                                                                     <b style="font-size: 12px;white-space: nowrap;" id="bank-transfer"></b>
                                                                 </td>
@@ -1181,9 +1181,10 @@
                                     </div>
                                 </div>
                                 <div class="bg-payment p-2 text-end border-0 text-nowrap" style="border-radius: 0 0 6px 6px;overflow-x: auto">
-                                    <img src="{{ asset('assets/payment/bank-transfer.jpg')}}" alt="" width="64">
+                                    
+                                    <img src="<?php echo e(asset('assets/payment/bank-transfer.jpg')); ?>" alt="" width="64">
                                 </div>
-                            </div> --}}
+                            </div>
 
                         </div>
                     </div>
@@ -1254,7 +1255,7 @@
 
 
 
-@push('custom_script')
+<?php $__env->startPush('custom_script'); ?>
 
 <script>
 function removeClass(){  
@@ -1584,9 +1585,10 @@ btnorder.addEventListener("click", function() {
 
 
 
-@endpush
+<?php $__env->stopPush(); ?>
 
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('template.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\compro-gandalispulsa\resources\views/template/order.blade.php ENDPATH**/ ?>

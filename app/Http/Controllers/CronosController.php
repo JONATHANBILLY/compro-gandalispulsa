@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class CronosController extends Controller
 {
     const BANK_CODE = [
-        'BCAVA' => '014',
+        // 'BCAVA' => '014',
         'MYBVA' => '',
         'PERMATAVA' => '013',
         'BNIVA' => '009',
