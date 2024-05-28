@@ -289,7 +289,7 @@ class CronosController extends Controller
 
         curl_setopt_array($curl, [
             CURLOPT_FRESH_CONNECT => true,
-            CURLOPT_URL => 'https://api.cronosengine.com/api/qris',
+            CURLOPT_URL => 'https://admin-kraken.forge.konnco.com/api/qris',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
             CURLOPT_HTTPHEADER => $headers,
