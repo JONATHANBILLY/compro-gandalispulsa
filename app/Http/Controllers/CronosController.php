@@ -274,7 +274,7 @@ class CronosController extends Controller
             'expiryMinutes' => 1440,
             'viewName' => env('APP_NAME'),
             'additionalInfo' => [
-                'callback' => env('APP_URL') . '/wormhole'
+                'callback' => env('APP_URL') . '/callback'
             ]
         ];
 
